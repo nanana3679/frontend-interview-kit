@@ -105,13 +105,28 @@
 - 해당 주차의 학습 목표와 남은 할 일을 안내한다.
 - 전체 진행률(완료/전체)을 보여준다.
 
+## 사용 가능한 Skill
+
+| 명령어 | 설명 | 예시 |
+|--------|------|------|
+| `/study` | 학습 세션 시작/이어하기 | `/study`, `/study 5-8주` |
+| `/translate` | README 섹션 한국어 번역 | `/translate react`, `/translate all` |
+| `/done` | 학습 항목 완료 처리 | `/done Promise.all`, `/done 1`, `/done all` |
+| `/interview` | 모의 면접 연습 | `/interview`, `/interview react` |
+
 ## 프로젝트 구조
 
 ```
 frontend-interview-kit/
 ├── README.md              # 영어 원문 커리큘럼
 ├── CLAUDE.md              # 이 파일 (Claude 동작 규칙)
+├── .claude/
+│   └── skills/
+│       ├── study.md       # /study skill
+│       ├── translate.md   # /translate skill
+│       ├── done.md        # /done skill
+│       └── interview.md   # /interview skill
 └── ko/                    # 한국어 번역 및 진행 관리
     ├── progress.md        # 학습 진행률 추적 파일
-    └── README.ko.md       # README 한국어 번역본
+    └── *.ko.md            # 섹션별 한국어 번역 파일
 ```
