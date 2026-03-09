@@ -32,11 +32,78 @@
 4. 사용자의 질문에 대해 개념 설명과 면접 답변 예시를 한국어로 제공한다.
 5. 진도를 추적하고, 다음 단계로 넘어갈 수 있도록 격려한다.
 
+### 진행률 추적
+
+`ko/progress.md` 파일로 사용자의 학습 진행률을 관리한다.
+
+**추적 규칙:**
+- 세션 시작 시 `ko/progress.md`를 읽어 현재 진도를 파악한다.
+- 사용자가 항목을 완료하면 체크박스를 `[x]`로 업데이트하고 완료 날짜를 기록한다.
+- 사용자가 새 주차/섹션으로 넘어가면 `current_week`을 갱신한다.
+- 매 세션마다 진행률 요약(완료/전체 비율)을 보여준다.
+- 파일이 없으면 초기 상태로 새로 생성한다.
+
+**파일 형식 (`ko/progress.md`):**
+
+```markdown
+# 학습 진행률
+
+- 현재 주차: {current_week}
+- 시작일: {start_date}
+- 최근 학습일: {last_date}
+
+## 1-2주: 기초 (HTML/CSS/JS)
+- [ ] W3Schools HTML/CSS 학습
+- [ ] web.dev HTML/CSS 모듈 완료
+- [ ] CSS-Tricks Flexbox/Grid 가이드 학습
+- [ ] 연습: 시맨틱 HTML 폼 만들기 (JS 없이)
+- [ ] 연습: 반응형 카드 그리드 (CSS Grid)
+- [ ] 연습: 랜딩 페이지 (모바일 퍼스트)
+- [ ] 체크리스트: Box model, 명시도, BEM 명명법 암기
+- [ ] 체크리스트: CSS 커스텀 속성, @layer, 컨테이너 쿼리 실험
+
+## 3-4주: React 심화
+- [ ] React.dev 공식 문서 학습
+- [ ] Developer Way 영상 시청
+- [ ] Jack Herrington 영상 시청
+- [ ] 연습: useReducer로 할 일 앱 만들기
+- [ ] 연습: Redux vs Zustand vs Jotai 비교
+
+## 5-8주: DSA 패턴 (Grind 169)
+- [ ] JavaScript.info 학습 (2주)
+- [ ] Namaste JavaScript 시청
+- [ ] You Don't Know JS 읽기
+- [ ] Learners Bucket 문제 풀기
+- [ ] 연습: Promise.all 직접 구현
+- [ ] 연습: debounce 함수 작성
+- [ ] 연습: Array.prototype.map 폴리필 구현
+- [ ] 핵심 8가지 패턴 마스터
+- [ ] 40+ 문제 풀기
+
+## 9-10주: 시스템 설계 + 성능
+- [ ] 시스템 설계 리소스 학습
+- [ ] 실제 시스템 3개 설계
+- [ ] Core Web Vitals 측정
+- [ ] 성능 최적화 실습
+
+## 11주: 테스팅 + 접근성
+- [ ] Testing Library 문서 학습
+- [ ] 테스트 스위트 작성
+- [ ] WCAG 접근성 감사
+- [ ] 스크린 리더 테스트
+
+## 12주: 모의 면접 + 프로젝트
+- [ ] 포트폴리오 프로젝트 1 완성
+- [ ] 포트폴리오 프로젝트 2 완성
+- [ ] 모의 면접 연습
+```
+
 ### 세션 시작 시
 
-- 사용자에게 현재 학습 진도를 물어본다.
+- `ko/progress.md`를 읽어 현재 진도를 확인한다.
 - 이전에 번역된 파일(`ko/` 디렉토리)이 있는지 확인한다.
-- 해당 주차의 학습 목표와 할 일을 안내한다.
+- 해당 주차의 학습 목표와 남은 할 일을 안내한다.
+- 전체 진행률(완료/전체)을 보여준다.
 
 ## 프로젝트 구조
 
@@ -44,6 +111,7 @@
 frontend-interview-kit/
 ├── README.md              # 영어 원문 커리큘럼
 ├── CLAUDE.md              # 이 파일 (Claude 동작 규칙)
-└── ko/                    # 한국어 번역 파일 디렉토리
+└── ko/                    # 한국어 번역 및 진행 관리
+    ├── progress.md        # 학습 진행률 추적 파일
     └── README.ko.md       # README 한국어 번역본
 ```
